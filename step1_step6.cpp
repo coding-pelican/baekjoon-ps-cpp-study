@@ -394,3 +394,242 @@ int main(void) {
     }
 }
 */
+// A+B - 5 10952
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int x, y;
+    cin >> x >> y;
+    while (!(x == 0 && y == 0)) {
+        cout << x + y << "\n";
+        cin >> x >> y;
+    }
+}
+*/
+// A+B - 4 10951
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int x, y;
+    while (!(cin >> x >> y).eof()) {
+        cout << x + y << "\n";
+    }
+}
+*/
+// 더하기 사이클 1110
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, x, y, cnt = 0;
+    cin >> n;
+    x = n = n < 10 ? n * 10 : n;
+    do {
+        y = (x / 10) + (x % 10);
+        x = (x % 10) * 10 + (y % 10);
+        cnt++;
+    } while (!(n == x));
+    cout << cnt;
+}
+*/
+// 최소, 최대 10818
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, x, min = 987654321, max = -987654321;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> x;
+        min = x < min ? x : min;
+        max = x > max ? x : max;
+    }
+    cout << min << " " << max << "\n";
+}
+*/
+// 최댓값 2562
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, order = 0, max = 0;
+    for (int i = 0; i < 9; i++) {
+        cin >> n;
+        if (n > max) {
+            max = n;
+            order = i + 1;
+        }
+    }
+    cout << max << "\n" << order;
+}
+*/
+// 숫자의 개수 2577
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int cnt[10] = {
+        0,
+    };
+    int a, b, c;
+    cin >> a;
+    cin >> b;
+    cin >> c;
+    for (int i = a * b * c; i > 0; i /= 10) {
+        ++cnt[i % 10];
+    }
+    for (int i = 0; i < 10; i++) {
+        cout << cnt[i] << "\n";
+    }
+}
+*/
+// 나머지 3052
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int x;
+    set<int> mod;
+    for (int i = 0; i < 10; i++) {
+        cin >> x;
+        mod.insert(x %= 42);
+    }
+    cout << mod.size();
+}
+*/
+// 평균 1546
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int size, max = 0;
+    int* subject;
+    double avg = 0;
+    cin >> size;
+    subject = (int*)malloc(sizeof(int) * size);
+    for (int i = 0; i < size; i++) {
+        cin >> subject[i];
+        max = subject[i] > max ? subject[i] : max;
+    }
+    for (int i = 0; i < size; i++) {
+        avg += (double)subject[i] / (double)max * 100.0;
+    }
+    avg /= size;
+    cout << avg;
+    free(subject);
+}
+*/
+// OX퀴즈 8958
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, cnt, sum;
+    string s;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cnt = 0;
+        sum = 0;
+        cin >> s;
+        for (int j = 0; j < s.size(); j++) {
+            cnt = s[j] == 'O' ? cnt + 1 : 0;
+            sum += cnt;
+        }
+        cout << sum << "\n";
+    }
+}
+*/
+// 평균은 넘겠지 4344
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int size, n, cnt;
+    double avg;
+    int* student;
+    cin >> size;
+    cout << fixed;
+    cout.precision(3);
+    for (int i = 0; i < size; i++) {
+        cnt = 0;
+        avg = 0;
+        cin >> n;
+        student = (int*)malloc(sizeof(int) * n);
+        for (int j = 0; j < n; j++) {
+            cin >> student[j];
+            avg += student[j];
+        }
+        avg /= n;
+        for (int j = 0; j < n; j++) {
+            cnt = student[j] > avg ? cnt + 1 : cnt;
+        }
+        cout << (double)cnt / (double)n * 100.0 << "%" << "\n";
+        free(student);
+    }
+}
+*/
+// 정수 N개의 합 15596
+/*
+#include <vector>
+long long sum(std::vector<int> &a) {
+    long long ans = 0;
+    for (int i : a) ans += i;
+    return ans;
+}
+*/
+// 셀프 넘버  4673
+/*
+#include <bits/stdc++.h>
+using namespace std;
+#define N 10000
+
+bool is_generator[N] = {
+    false,
+};
+
+int getGenerator(int n) {
+    int number = n;
+    while (n != 0) {
+        number += (n % 10);
+        n /= 10;
+    }
+    return number;
+}
+
+void setSelfNumber() {
+    int number;
+    for (int i = 0; i < N; i++) {
+        number = getGenerator(i + 1);
+        if (number - 1 < N) is_generator[number - 1] = true;
+    }
+}
+
+int main() {
+    setSelfNumber();
+    for (int i = 0; i < N; i++)
+        if (!is_generator[i]) cout << i + 1 << "\n";
+}
+*/
+// 한수 1065
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int getNumberOfHansu(int n) {
+    int cnt = 99;
+    if (n < 100) {
+        return n;
+    } else {
+        for (int i = 100; i <= n; i++) {
+            if ((i / 100 - (i % 100) / 10) == (i % 100) / 10 - (i % 100) % 10) cnt++;
+        }
+    }
+    return cnt;
+}
+int main(void) {
+    int x;
+    cin >> x;
+    cout << getNumberOfHansu(x);
+}
+*/
