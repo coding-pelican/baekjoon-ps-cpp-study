@@ -492,7 +492,7 @@ using namespace std;
 int main(void) {
     int x;
     set<int> mod;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; +i < 10; i++) {
         cin >> x;
         mod.insert(x %= 42);
     }
@@ -631,5 +631,228 @@ int main(void) {
     int x;
     cin >> x;
     cout << getNumberOfHansu(x);
+}
+*/
+// 아스키코드 11654
+/*
+#include <bits/stdc++.h>
+int main(void) { printf("%d", getchar()); }
+*/
+// 숫자의 합 11720
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, sum = 0;
+    string s;
+    cin >> n;
+    cin >> s;
+    for (int i = 0; i < n; i++) {
+        sum += s[i] - '0';
+    }
+    cout << sum;
+}
+*/
+// 알파벳 찾기 10809
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    char ch;
+    string s;
+    cin >> s;
+    for (char i = 0; i < 26; i++) {
+        ch = i + 97;
+        for (int j = 0; j < s.size(); j++) {
+            if (s[j] == ch) {
+                cout << j << " ";
+                break;
+            } else {
+                if (j == s.size() - 1) {
+                    cout << -1 << " ";
+                }
+            }
+        }
+    }
+}
+*/
+// 문자열 반복 2675
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int t, r;
+    string s, p;
+    cin >> t;
+    for (int i = 0; i < t; i++) {
+        p.clear();
+        cin >> r >> s;
+        for (int j = 0; j < s.size(); j++) {
+            for (int k = 0; k < r; k++) {
+                p.push_back(s[j]);
+            }
+        }
+        cout << p << '\n';
+    }
+}
+*/
+// 단어 공부 1157
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    string s;
+    set<char> alphabat_set;
+    vector<char> alphabat_vector;
+    vector<int> count;
+    int cnt, max_idx, max_size = 0;
+    bool is_duplicated = false;
+    cin >> s;
+    for (int i = 0; i < s.size(); i++) {
+        s[i] = toupper(s[i]);
+        alphabat_set.insert(s[i]);
+    }
+    for (auto x : alphabat_set) {
+        cnt = 0;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == x) {
+                cnt++;
+            }
+        }
+        max_size = cnt > max_size ? cnt : max_size;
+        count.push_back(cnt);
+    }
+    cnt = 0;
+    for (int i = 0; i < count.size(); i++) {
+        if (count[i] == max_size) {
+            ++cnt;
+            if (cnt > 1) {
+                is_duplicated = true;
+                break;
+            }
+            max_idx = i;
+        }
+    }
+    if (is_duplicated) {
+        cout << "?\n";
+    } else {
+        copy(alphabat_set.begin(), alphabat_set.end(), back_inserter(alphabat_vector));
+        cout << alphabat_vector[max_idx] << "\n";
+    }
+}
+*/
+// 단어의 개수 1152
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int cnt = 0;
+    string s;
+    getline(cin, s);
+    if (s.empty()) {
+        cout << cnt;
+        return 0;
+    }
+    cnt = 1;
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == ' ') cnt++;
+    }
+    if (s[0] == ' ') cnt--;
+    if (s[s.length() - 1] == ' ') cnt--;
+
+    cout << cnt;
+}
+*/
+// 상수 2908
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    string a, b;
+    int x, y;
+    cin >> a >> b;
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
+    x = stoi(a);
+    y = stoi(b);
+    cout << (x > y ? x : y);
+}
+*/
+// 다이얼 5622
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int total = 0;
+    string s;
+    cin >> s;
+    for (auto i : s) {
+        for (auto c : "zzADGJMPTW") {
+            total += i >= c;
+        }
+        total++;
+    }
+    cout << total;
+}
+*/
+// 크로아티아 알파벳 2941
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int cnt = 0;
+    string s;
+    cin >> s;
+    for (int i = 0; i < s.length(); i++) {
+        ++cnt;
+        if (s[i] == 'l' || s[i] == 'n') {
+            if (s[i + 1] == 'j') {
+                ++i;
+                continue;
+            }
+        }
+        if (s[i] == 'z') {
+            if (s[i - 1] == 'd' && s[i + 1] == '=') {
+                --cnt;
+                ++i;
+                continue;
+            }
+        }
+        if (s[i] == '=' || s[i] == '-') {
+            --cnt;
+        }
+    }
+    cout << cnt;
+}
+*/
+// 그룹 단어 체커 1316
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, cnt, result = 0;
+    string s;
+    vector<char> group;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cnt = 0;
+        group.clear();
+        cin >> s;
+        for (int i = 0; i < s.length(); i++) {
+            auto it = find(group.begin(), group.end(), s[i]);
+            if (it == group.end()) {
+                group.push_back(s[i]);
+                cnt++;
+            } else {
+                if (s[i] == s[i - 1]) {
+                    cnt++;
+                } else {
+                    break;
+                }
+            }
+            if (i == s.length() - 1) result++;
+        }
+    }
+    cout << result;
 }
 */
