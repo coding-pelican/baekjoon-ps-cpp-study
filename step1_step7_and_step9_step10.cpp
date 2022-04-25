@@ -1182,6 +1182,7 @@ int main(void) {
     cout << sum % 10 << '\n';
 }
 */
+// -----브루트 포스-----
 // 블랙잭 2798
 /*
 #include <bits/stdc++.h>
@@ -1202,5 +1203,88 @@ int main(void) {
         }
     }
     cout << result << '\n';
+}
+*/
+// -----정렬-----
+// 수 정렬하기 2750, 수 정렬하기 2 2751
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for (auto &it : v) cin >> it;
+    sort(v.begin(), v.end());
+    for (auto it : v) cout << it << '\n';
+}
+*/
+// 수 정렬하기 2 2751 (Merge Sort)
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+int N;
+void merge(vi &v, int m, int middle, int n) {
+    vi sorted;
+    int i = m;
+    int j = middle + 1;
+    // 작은 순서대로 배열에 삽입
+    while (i <= middle && j <= n) {
+        if (v[i] <= v[j]) {
+            sorted.push_back(v[i]);
+            i++;
+        } else {
+            sorted.push_back(v[j]);
+            j++;
+        }
+    }
+    // 남은 데이터 삽입
+    if (i > middle) {
+        for (int t = j; t <= n; t++) sorted.push_back(v[t]);
+    } else {
+        for (int t = i; t <= n; t++) sorted.push_back(v[t]);
+    }
+    // 정렬된 배열 삽입
+    for (int t = m; t <= n; t++) v[t] = sorted[t - m];
+}
+void mergeSort(vi &v, int m, int n) {
+    if (m < n) {
+        int middle = (m + n) / 2;
+        mergeSort(v, m, middle);
+        mergeSort(v, middle + 1, n);
+        merge(v, m, middle, n);
+    }
+}
+int main(void) {
+    cin >> N;
+    vi v(N);
+    for (auto &it : v) cin >> it;
+    mergeSort(v, 0, N - 1);
+    for (auto &it : v) cout << it << ' ';
+    cout << '\n';
+}
+*/
+// 수 정렬하기 3 10989
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+int main(void) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int count[10000] = {0};
+    int N, n;
+    cin >> N;
+    for (int i = 0; i < N; i++) {
+        cin >> n;
+        count[n - 1]++;
+    }
+    for (int i = 0; i < 10000; i++) {
+        if (count[i] != 0) {
+            for (int j = 0; j < count[i]; j++) cout << i + 1 << '\n';
+        }
+    }
 }
 */
