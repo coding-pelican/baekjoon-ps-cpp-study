@@ -261,6 +261,15 @@ int main(void) {
     }
 }
 */
+// A+B - 2 2558
+/*#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int a, b;
+    cin >> a;
+    cin >> b;
+    cout << a + b << '\n';
+}*/
 // A+B - 3 10950
 /*
 #include <bits/stdc++.h>
@@ -320,6 +329,19 @@ int main(void) {
     cin >> n;
     for (int i = n; i > 0; i--) {
         cout << i << "\n";
+    }
+}
+*/
+// A+B - 6 10953
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, a, b;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        scanf("%d,%d", &a, &b);
+        printf("%d\n", a + b);
     }
 }
 */
@@ -854,5 +876,331 @@ int main(void) {
         }
     }
     cout << result;
+}
+*/
+// 손익분기점 1712
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int fc, v, p, bepq;
+    cin >> fc >> v >> p;
+    if (v >= p) {
+        cout << -1;
+    } else {
+        bepq = fc / (p - v) + 1;
+        cout << bepq;
+    }
+}
+*/
+// 벌집 2292
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int n, cnt = 0;
+    cin >> n;
+    if (n == 1) {
+        cout << n;
+    } else {
+        while (3 * pow(cnt, 2) - 3 * cnt + 1 < n) {
+            cnt++;
+        }
+        cout << cnt;
+    }
+}
+*/
+// 분수 찾기 1193
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    // 분자 : 1 1 2 3 2 1 1 2 3 4 5 2 3 4 1 1 2 3 4 5 6
+    // 분모 : 1 2 1 1 2 3 4 3 2 1 1 4 3 2 5 6 5 4 3 2 1
+    int n, i;
+    cin >> n;
+    for (i = 1; i < n; ++i)
+        n -= i;
+    if (i % 2 == 1)
+        cout << i + 1 - n << '/' << n << endl;
+    else
+        cout << n << '/' << i + 1 - n << endl;
+}
+*/
+// 달팽이는 올라가고 싶다 2869
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int a, b, v, result = 1;
+    cin >> a >> b >> v;
+    //while (true) {
+    //    v -= a;
+    //    if (v <= 0) {
+    //        break;
+    //    }
+    //    v += b;
+    //    result++;
+    //}
+    result = (v - b - 1) / (a - b) + 1;
+    cout << result << '\n';
+}
+*/
+// ACM 호텔 10250
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int h, w, n, l;
+    cin >> l;
+    for (int i = 0; i < l; i++) {
+        cin >> h >> w >> n;
+        if (n % h == 0)
+            cout << (h * 100) + (n / h) << '\n';
+        else
+            cout << (n % h * 100) + (n / h + 1) << '\n';
+    }
+}
+*/
+
+// 부녀회장이 될테야 2775
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int f(int a, int b) {
+    if (b == 1) {
+        return 1;
+    }
+    if (a == 0) {
+        return b;
+    }
+    return f(a - 1, b) + f(a, b - 1);
+}
+int main(void) {
+    // a층 b호를 만족 : a층 b호 사람 수 = a-1층 1~b호까지의 사람 수 합, 단 0층의 i호에는 i명
+    // k층 n호는 몇 명?
+    // 2 : 1 4 10 20
+    // 1 : 1 3 6 10
+    // 0 : 1 2 3 4
+    // ex 2층 3호 = 1층 3호 + 2층 2호
+    // f(a, b) = p[a - 1][b] + p[a][b - 1]
+    // f(a, b) = f(a - 1, b) + f(a, b - 1)
+    int T, k, n;
+    cin >> T;
+    for (int i = 0; i < T; i++) {
+        cin >> k;
+        cin >> n;
+        cout << f(k, n) << '\n';
+    }
+}
+*/
+// 설탕 배달 2839
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int getAnswer(int n) {
+    int cnt = 0;
+    while (n >= 0) {
+        if (n % 5 == 0) {
+            cnt += n / 5;
+            return cnt;
+        }
+        n -= 3;
+        cnt++;
+    }
+    return -1;
+}
+int main(void) {
+    int n, cnt = 0;
+    cin >> n;
+    cout << getAnswer(n) << '\n';
+}
+*/
+// 큰 수 A+B 10757
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int carry = 0;
+    int length, a_length, b_length, x, y, digit;
+    string a = "", b = "", c = "";
+    cin >> a >> b;
+    a_length = a.length();
+    b_length = b.length();
+    if (b_length > a_length) {
+        swap(a, b);
+        swap(a_length, b_length);
+    }
+    length = a_length > b.length() ? a_length : b.length();
+
+    string tmp = "";
+    if (a_length != b_length) {
+        for (int i = 0; i < (a_length - b_length); i++) tmp += "0";
+    }
+    b = tmp + b;
+
+    for (int i = length - 1; i >= 0; i--) {
+        x = a[i] - '0';
+        y = b[i] - '0';
+        digit = x + y;
+        if (carry == 1) {
+            digit++;
+            carry = 0;
+        }
+        if (digit > 9) carry = 1;
+        c += digit % 10 + '0';
+    }
+    if (carry == 1) c += "1";
+    for (int i = c.length() - 1; i >= 0; i--) {
+        cout << c[i];
+    }
+}
+*/
+// -----재귀-----
+// 팩토리얼 10872
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int factorial(int n) { return n > 1 ? n * factorial(n - 1) : 1; }
+int main(void) {
+    int x;
+    cin >> x;
+    cout << factorial(x) << '\n';
+}
+*/
+// 피보나치 수 5 10870 - 재귀
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int f(int n) { return n <= 1 ? n : f(n - 1) + f(n - 2); }
+int main(void) {
+    int n;
+    cin >> n;
+    cout << f(n) << '\n';
+}
+*/
+// 피보나치 수 1 2747 - 비네의 공식
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int f(int n) { return (pow(1 + sqrt(5), n) - pow(1 - sqrt(5), n)) / (pow(2, n) * sqrt(5)); }
+int main(void) {
+    int n;
+    cin >> n;
+    cout << f(n) << '\n';
+}
+*/
+// 피보나치 수 2 2748 - 메모이제이션
+/*
+#include <bits/stdc++.h>
+using namespace std;
+long long fibo[91] = {0, 1};
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 2; i <= n; i++) {
+        fibo[i] = fibo[i - 1] + fibo[i - 2];
+    }
+    cout << fibo[n] << '\n';
+    return 0;
+}
+*/
+// 별 찍기 - 10 2447
+/*
+#include <bits/stdc++.h>
+using namespace std;
+void star(int i, int j, int n) {
+    if ((i / n) % 3 == 1 && (j / n) % 3 == 1) {
+        cout << ' ';
+    } else {
+        if (n / 3 == 0)
+            cout << '*';
+        else
+            star(i, j, n / 3);
+    }
+}
+int main(void) {
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) star(i, j, n);
+        cout << '\n';
+    }
+}
+*/
+// 하노이 탑 이동 순서 11729
+/*
+#include <bits/stdc++.h>
+using namespace std;
+void hanoi(int n, int start, int mid, int to) {
+    if (n == 1) {
+        cout << start << ' ' << to << '\n';
+    } else {
+        // A -> C로 옮긴다고 가정할 떄,
+        // STEP 1 : n-1개를 A에서 B로 이동 (= start 지점의 N-1개의 원판을 mid 지점으로 옮긴다.)
+        hanoi(n - 1, start, to, mid);
+        // STEP 2 : 1개를 A에서 C로 이동 (= start 지점의 N번째 원판을 to지점으로 옮긴다.)
+        cout << start << ' ' << to << '\n';
+        // STEP 3 : N-1개를 B에서 C로 이동 (= mid 지점의 N-1개의 원판을 to 지점으로 옮긴다.)
+        hanoi(n - 1, mid, start, to);
+    }
+}
+int main(void) {
+    int n;
+    cin >> n;
+    cout << (1 << n) - 1 << '\n';
+    hanoi(n, 1, 2, 3);
+}
+*/
+//음계 2920
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    vector<int> sound(8);
+    int ascending = 0, descending = 0;
+    for (int i = 0; i < 8; i++) cin >> sound[i];
+    for (int i = 0; i < 4; i++) {
+        if (sound[i] == i + 1 && sound[i] + sound[7 - i] == 9)
+            ascending++;
+        else if (sound[7 - i] == i + 1 && sound[i] + sound[7 - i] == 9)
+            descending++;
+    }
+    cout << (ascending == 4 ? "ascending" : descending == 4 ? "descending" : "mixed") << '\n';
+}
+*/
+//검증수 2475
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int x, sum = 0;
+    for (int i = 0; i < 5; i++) {
+        cin >> x;
+        sum += (x * x);
+    }
+    cout << sum % 10 << '\n';
+}
+*/
+// 블랙잭 2798
+/*
+#include <bits/stdc++.h>
+
+#include <algorithm>
+using namespace std;
+int card[100] = {0};
+int main(void) {
+    int n, m, sum = 0, result = 0;
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) cin >> card[i];
+    for (int i = 0; i < n - 2; i++) {
+        for (int j = i + 1; j < n - 1; j++) {
+            for (int k = j + 1; k < n; k++) {
+                sum = card[i] + card[j] + card[k];
+                if (sum <= m) result = max(sum, result);
+            }
+        }
+    }
+    cout << result << '\n';
 }
 */
