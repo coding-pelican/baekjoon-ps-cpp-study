@@ -1288,3 +1288,62 @@ int main(void) {
     }
 }
 */
+// 통계학 2108
+/*
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+typedef vector<int> vi;
+int main(void) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int N, mean = 0, median = 0, mode = 0, modecount = 0, range = 0;
+    bool is_second = false;
+    cin >> N;
+    vi number(N);
+    vi count(8001, 0);
+    for (int i = 0; i < N; i++) {
+        cin >> number[i];
+        mean += number[i];
+        count[number[i] + 4000]++;
+        modecount = max(modecount, count[number[i] + 4000]);
+    }
+    mean = round(mean / (double)N);
+    sort(number.begin(), number.end());
+    median = number[N / 2];
+    for (int i = -4000; i <= 4000; i++) {
+        if (count[i + 4000] == modecount) {
+            mode = i;
+            if (is_second) {
+                break;
+            }
+            is_second = true;
+        }
+    }
+    range = number[N - 1] - number[0];
+    cout << mean << '\n';
+    cout << median << '\n';
+    cout << mode << '\n';
+    cout << range << '\n';
+}
+*/
+// 소트인사이드 1427
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int lli;
+typedef vector<lli> vl;
+int main(void) {
+    lli N;
+    vl digit_of_N;
+    cin >> N;
+    while (N > 0) {
+        digit_of_N.push_back(N % 10);
+        N /= 10;
+    }
+    sort(digit_of_N.begin(), digit_of_N.end());
+    reverse(digit_of_N.begin(), digit_of_N.end());
+    for (auto &it : digit_of_N) cout << it;
+}
+*/
