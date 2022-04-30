@@ -37,6 +37,19 @@ int main(void) {
         return 0;
 }
 */
+// 새싹 25083
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) { 
+    puts("         ,r'\"7");
+    puts("r`-_   ,'  ,/");
+    puts(" \\. \". L_r'");
+    puts("   `~\\/");
+    puts("      |");
+    puts("      |");
+}
+*/
 // A+B 1000
 /*
 #include <bits/stdc++.h>
@@ -1291,6 +1304,7 @@ int main(void) {
 // 통계학 2108
 /*
 #include <bits/stdc++.h>
+
 #include <algorithm>
 using namespace std;
 typedef vector<int> vi;
@@ -1345,5 +1359,131 @@ int main(void) {
     sort(digit_of_N.begin(), digit_of_N.end());
     reverse(digit_of_N.begin(), digit_of_N.end());
     for (auto &it : digit_of_N) cout << it;
+}
+*/
+// 좌표 정렬하기 11650
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef pair<int, int> P;
+typedef vector<P> vp;
+int main(void) {
+    int N, x, y;
+    cin >> N;
+    vp point(N);
+    for (auto &it : point) {
+        cin >> x >> y;
+        it = pair<int, int>(x, y);
+    }
+    sort(point.begin(), point.end(), [&](P a, P b) { return a.first < b.first ? true : a.first == b.first ? a.second < b.second ? true : false : false; });
+    for (auto &it : point) {
+        cout << it.first << ' ' << it.second << '\n';
+    }
+}
+*/
+// 좌표 정렬하기 2 11651
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef pair<int, int> P;
+typedef vector<P> vp;
+int main(void) {
+    int N, x, y;
+    cin >> N;
+    vp point(N);
+    for (auto &it : point) {
+        cin >> x >> y;
+        it = P(x, y);
+    }
+    sort(point.begin(), point.end(), [&](P a, P b) { return a.second == b.second ? a.first < b.first ? true : false : a.second < b.second ? true : false; });
+    for (auto &it : point) {
+        cout << it.first << ' ' << it.second << '\n';
+    }
+}
+*/
+// 단어 정렬 1181
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<string> vs;
+int main(void) {
+    int N;
+    cin >> N;
+    vs word(N);
+    for (auto &it : word) cin >> it;
+    sort(word.begin(), word.end(), [](string a, string b) {
+        if ((a.length() < b.length())) {
+            return true;
+        } else if ((a.length() > b.length())) {
+            return false;
+        } else {
+            return a < b;
+        }
+    });
+    word.erase(unique(word.begin(), word.end()), word.end());
+    for (auto &it : word) {
+        cout << it << '\n';
+    }
+}
+*/
+// 나이순 정렬 10814
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef pair<int, int> target;
+typedef pair<target, string> user;
+typedef vector<user> member;
+int main(void) {
+    int N;
+    cin >> N;
+    member m(N);
+    for (int i = 0; i < N; i++) {
+        user u;
+        u.first.second = i;
+        cin >> u.first.first >> u.second;
+        m[i] = u;
+    };
+    sort(m.begin(), m.end(), [&](user a, user b) {
+        if ((a.first.first < b.first.first)) {
+            return true;
+        } else if ((a.first.first > b.first.first)) {
+            return false;
+        } else {
+            return a.first.second < b.first.second;
+        }
+    });
+    for (auto &it : m) cout << it.first.first << ' ' << it.second << '\n';
+}*/
+// 좌표 압축 18870
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef pair<int, int> point;
+typedef vector<point> coord;
+typedef vector<int> vi;
+int main(void) {
+    int N, index = 0, previous;
+    cin >> N;
+    coord pos(N);
+
+    for (int i = 0; i < N; i++) {
+        point p;
+        cin >> p.first;
+        p.second = i;
+        pos[i] = p;
+    }
+    sort(pos.begin(), pos.end());
+    previous = pos[0].first;
+    pos[0].first = index;
+    for (int i = 1; i < N; i++) {
+        if (pos[i].first == previous) {
+            pos[i].first = index;
+        } else {
+            previous = pos[i].first;
+            pos[i].first = (index += 1);
+        }
+    }
+    sort(pos.begin(), pos.end(), [&](point a, point b) { return a.second < b.second; });
+    for (auto &it : pos) cout << it.first << ' ';
 }
 */
