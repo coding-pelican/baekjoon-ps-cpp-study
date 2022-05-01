@@ -1276,6 +1276,30 @@ int main(void) {
 }
 */
 // 덩치 7568
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef pair<int, int> bulk;  // weight, height
+typedef vector<bulk> student;
+int main(void) {
+    int N, rank = 1;
+    cin >> N;
+    student s(N);
+    bulk previous;
+    for (int i = 0; i < N; i++) {
+        bulk b;
+        b.first = i;
+        cin >> b.first >> b.second;
+        s[i] = b;
+    }
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++)
+            if (s[i].first < s[j].first && s[i].second < s[j].second) rank++;
+        cout << rank << ' ';
+        rank = 1;
+    }
+}
+*/
 // 체스판 다시 칠하기 1018
 // 영화감독 숌 1436
 // -----정렬-----
