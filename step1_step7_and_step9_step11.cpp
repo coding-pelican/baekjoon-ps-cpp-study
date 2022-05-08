@@ -1069,6 +1069,145 @@ int main(void) {
     }
 }
 */
+// -----기본 수학 2----
+// 소수 찾기 1978
+/*
+#include <bits/stdc++.h>
+using namespace std;
+const int MAX_N = 1000;
+bool isPrime[MAX_N + 1];
+void eratosthenes() {
+    memset(isPrime, 1, sizeof(isPrime));
+    isPrime[0] = isPrime[1] = false;
+    int sqrtn = int(sqrt(MAX_N));
+    for (int i = 2; i < sqrtn + 1; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < MAX_N + 1; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+int main(void) {
+    eratosthenes();
+    int N, n, cnt = 0;
+    cin >> N;
+    for (int i = 0; i < N; i++) {
+        cin >> n;
+        if (isPrime[n]) cnt++;
+    }
+    cout << cnt << '\n';
+}
+*/
+// 소수 2581
+/*
+#include <bits/stdc++.h>
+using namespace std;
+const int MAX_N = 10000;
+bool isPrime[MAX_N + 1];
+void eratosthenes() {
+    memset(isPrime, 1, sizeof(isPrime));
+    isPrime[0] = isPrime[1] = false;
+    int sqrtn = int(sqrt(MAX_N));
+    for (int i = 2; i < sqrtn + 1; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < MAX_N + 1; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+int main(void) {
+    eratosthenes();
+    int M, N, cnt = 0, sum = 0, min_prime = 10001;
+    cin >> M;
+    cin >> N;
+    for (int i = M; i < N + 1; i++) {
+        if (isPrime[i]) {
+            cnt++;
+            sum += i;
+            min_prime = min(min_prime, i);
+        }
+    }
+    if (cnt > 0) {
+        cout << sum << '\n';
+        cout << min_prime << '\n';
+    } else {
+        cout << -1 << '\n';
+    }
+}
+*/
+// 소인수분해 11653
+/*
+#include <bits/stdc++.h>
+using namespace std;
+const int MAX_N = 10000000;
+int minFactor[MAX_N + 1];
+void eratosthenes() {
+    minFactor[0] = minFactor[1] = -1;
+    for (int i = 2; i < MAX_N + 1; i++) {
+        minFactor[i] = i;
+    }
+    int sqrtn = int(sqrt(MAX_N));
+    for (int i = 2; i < sqrtn + 1; i++) {
+        if (minFactor[i] == i) {
+            for (int j = i * i; j < MAX_N + 1; j += i) {
+                if (minFactor[j] == j) {
+                    minFactor[j] = i;
+                }
+            }
+        }
+    }
+}
+void factor(int n) {
+    while (n > 1) {
+        cout << minFactor[n] << '\n';
+        n /= minFactor[n];
+    }
+}
+int main(void) {
+    eratosthenes();
+    int N;
+    cin >> N;
+    factor(N);
+}
+*/
+// 소수 구하기 1929
+/*
+#include <bits/stdc++.h>
+using namespace std;
+const int MAX_N = 1000000;
+bool isPrime[MAX_N + 1];
+void eratosthenes() {
+    memset(isPrime, 1, sizeof(isPrime));
+    isPrime[0] = isPrime[1] = false;
+    int sqrtn = int(sqrt(MAX_N));
+    for (int i = 2; i < sqrtn + 1; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < MAX_N + 1; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+int main(void) {
+    eratosthenes();
+    int M, N;
+    cin >> M >> N;
+    for (int i = M; i < N + 1; i++) {
+        if (isPrime[i]) {
+            cout << i << '\n';
+        }
+    }
+}
+*/
+// 베르트랑 공준 4948
+// 골드바흐의 추측 9020
+// 직사각형에서 탈출 1085
+// 네 번째 점 3009
+// 직각삼각형 4153
+// 택시 기하학 3053
+// 터렛 1002
 // -----재귀-----
 // 팩토리얼 10872
 /*
@@ -1235,7 +1374,6 @@ int main(void) {
 // 블랙잭 2798
 /*
 #include <bits/stdc++.h>
-#include <algorithm>
 using namespace std;
 int card[100] = {0};
 int main(void) {
@@ -1301,7 +1439,57 @@ int main(void) {
 }
 */
 // 체스판 다시 칠하기 1018
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<string> vs;
+int main(void) {
+    int N, M, min_cnt = 987654321, w_based_cnt = 0, b_based_cnt = 0;
+    cin >> N >> M;
+    vs board(N);
+    for (int i = 0; i < N; i++) cin >> board[i];
+    for (int i = 0; i + 8 <= N; i++) {
+        for (int j = 0; j + 8 <= M; j++) {
+            w_based_cnt = 0;
+            b_based_cnt = 0;
+            for (int k = i; k < i + 8; k++) {
+                for (int l = j; l < j + 8; l++) {
+                    if ((k + l) % 2 == 0) {
+                        board[k][l] != 'W' ? w_based_cnt++ : b_based_cnt++;
+                    } else {
+                        board[k][l] == 'W' ? w_based_cnt++ : b_based_cnt++;
+                    }
+                }
+            }
+            min_cnt = min(min_cnt, min(w_based_cnt, b_based_cnt));
+        }
+    }
+    cout << min_cnt << '\n';
+}
+*/
 // 영화감독 숌 1436
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int N, temp, title = 0, cnt = 0;
+    cin >> N;
+    while (cnt != N) {
+        title++;
+        temp = title;
+        // 수에 연속된 "666"이 있는지 판별
+        while (temp != 0) {  // 종말의 숫자라면
+            if (temp % 1000 == 666) {
+                cnt++;
+                break;
+            } else {
+                temp /= 10;  // 일의 자리수 삭제
+            }
+        }
+    }
+    cout << title << '\n';
+}
+*/
 // -----정렬-----
 // 수 정렬하기 2750, 수 정렬하기 2 2751
 /*
@@ -1388,8 +1576,6 @@ int main(void) {
 // 통계학 2108
 /*
 #include <bits/stdc++.h>
-
-#include <algorithm>
 using namespace std;
 typedef vector<int> vi;
 int main(void) {
