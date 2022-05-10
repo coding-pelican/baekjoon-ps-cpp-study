@@ -1202,11 +1202,149 @@ int main(void) {
 }
 */
 // 베르트랑 공준 4948
+/*
+#include <bits/stdc++.h>
+using namespace std;
+const int MAX_N = 123456 * 2;
+bool isPrime[MAX_N + 1];
+void eratosthenes() {
+    memset(isPrime, 1, sizeof(isPrime));
+    isPrime[0] = isPrime[1] = false;
+    int sqrtn = int(sqrt(MAX_N));
+    for (int i = 2; i < sqrtn + 1; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < MAX_N + 1; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+int main(void) {
+    int n = 0, cnt;
+    eratosthenes();
+    while (cin >> n) {
+        if (n == 0) break;
+        cnt = 0;
+        for (int i = n + 1; i < 2 * n + 1; i++)
+            if (isPrime[i]) cnt++;
+        cout << cnt << '\n';
+    }
+}
+*/
 // 골드바흐의 추측 9020
+/*
+#include <bits/stdc++.h>
+using namespace std;
+const int MAX_N = 10000;
+bool isPrime[MAX_N + 1];
+void eratosthenes() {
+    memset(isPrime, 1, sizeof(isPrime));
+    isPrime[0] = isPrime[1] = false;
+    int sqrtn = int(sqrt(MAX_N));
+    for (int i = 2; i < sqrtn + 1; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < MAX_N + 1; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+int main(void) {
+    int n, T;
+    eratosthenes();
+    cin >> T;
+    for (int i = 0; i < T; i++) {
+        cin >> n;
+        for (int j = (n / 2); j > 0; j--) {
+            if (isPrime[j] && isPrime[n - j]) {  // (j) + (n - j) == n => true
+                cout << j << ' ' << n - j << '\n';
+                break;
+            }
+        }
+    }
+}
+*/
 // 직사각형에서 탈출 1085
+/*
+// +-----------A(w,h)
+// |	 *      |
+// |	 *      |
+// |	 *      |     min(*(p 부터 '-'or'|' 까지의 거리)) ?
+// |****P(x,y)*|
+// |	 *      |
+// O(0,0)------+
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    int x, y, w, h, min_d = 987654321;
+    cin >> x >> y >> w >> h;
+    int d[4] = {x, y, w - x, h - y};
+    for (auto &it : d) {
+        min_d = min(min_d, it);
+    }
+    cout << min_d << '\n';
+}
+*/
 // 네 번째 점 3009
+/*
+#include <bits/stdc++.h>
+using namespace std;
+typedef pair<int, int> P;
+int main(void) {
+    P p[5];
+    for (int i = 1; i < 4; i++) {
+        int x, y;
+        cin >> x >> y;
+        p[i] = P(x, y);
+    }
+
+    if (p[1].first == p[2].first) {
+        p[4].first = p[3].first;
+    } else if (p[1].first == p[3].first) {
+        p[4].first = p[2].first;
+    } else {
+        p[4].first = p[1].first;
+    }
+
+    if (p[1].second == p[2].second) {
+        p[4].second = p[3].second;
+    } else if (p[1].second == p[3].second) {
+        p[4].second = p[2].second;
+    } else {
+        p[4].second = p[1].second;
+    }
+
+    cout << p[4].first << ' ' << p[4].second << '\n';
+}
+*/
 // 직각삼각형 4153
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main(void) {
+    long long a, b, c;
+    while (cin >> a >> b >> c) {
+        if (a == 0 && b == 0 && c == 0) break;
+        if (a > b) swap(a, b);
+        if (b > c) swap(b, c);
+        cout << (a * a + b * b == c * c ? "right" : "wrong") << '\n';
+    }
+}
+*/
 // 택시 기하학 3053
+/*
+#include <bits/stdc++.h>
+using namespace std;
+const double PI = 3.14159265358979323846;
+int main(void) {
+    long double r;
+    cin >> r;
+    cout << fixed;
+    cout.precision(6);
+    cout << PI * powl(r, 2) << '\n';
+    cout << 2.0 * powl(r, 2) << '\n';
+}
+*/
 // 터렛 1002
 // -----재귀-----
 // 팩토리얼 10872
