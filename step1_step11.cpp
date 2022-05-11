@@ -1346,6 +1346,35 @@ int main(void) {
 }
 */
 // 터렛 1002
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int T;
+    int x1, y1, r1, x2, y2, r2;
+    int d, sub, sum;
+    cin >> T;
+    for (int i = 0; i < T; i++) {
+        cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
+        d = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+        sub = (r1 - r2) * (r1 - r2);
+        sum = (r1 + r2) * (r1 + r2);
+        if (d == 0) {
+            if (sub == 0) {
+                cout << "-1" << '\n';
+            } else {
+                cout << "0" << '\n';
+            }
+        } else if (d == sub || d == sum) {
+            cout << "1" << '\n';
+        } else if (sub < d && d < sum) {
+            cout << "2" << '\n';
+        } else {
+            cout << "0" << '\n';
+        }
+    }
+}
+*/
 // -----재귀-----
 // 팩토리얼 10872
 /*
